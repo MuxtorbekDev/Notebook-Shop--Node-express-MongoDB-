@@ -16,15 +16,23 @@ app.engine("hbs", hbs.engine);
 // app use
 app.set("view engine", "hbs");
 app.set("views", "views");
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { title: "Home Page", isHome: true });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { title: "About Page", isAbout: true });
 });
 
+app.get("/notebooks", (req, res) => {
+  res.render("notebooks", { title: "Notebook Page", isNotebooks: true });
+});
+
+app.get("/add", (req, res) => {
+  res.render("add", { title: "Add Page", isAdd: true });
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
 });
