@@ -1,3 +1,7 @@
 .navbar {
   padding: 0 4rem ;
 }
+.form-control {
+  border-radius: .5rem;
+  padding: 2rem;
+}
