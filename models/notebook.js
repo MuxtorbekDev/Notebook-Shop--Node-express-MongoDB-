@@ -3,10 +3,12 @@ const fs = require("fs");
 const path = require("path");
 
 class Notebook {
-  constructor(title, price, img) {
+  constructor(title, price, img, descr) {
     this.title = title;
     this.price = price;
     this.img = img;
+    this.descr = descr;
+
     this.id = uuidv4();
   }
 
@@ -15,6 +17,7 @@ class Notebook {
       title: this.title,
       price: this.price,
       img: this.img,
+      descr: this.descr,
       id: this.id,
     };
   }
@@ -25,7 +28,7 @@ class Notebook {
     console.log("Notebooks", notebooks);
 
     return new Promise((resolve, reject) => {
-      fs.readFile(
+      fs.writeFile(
         path.join(__dirname, "..", "data", "notebooks.json"),
         JSON.stringify(notebooks),
         (err) => {
