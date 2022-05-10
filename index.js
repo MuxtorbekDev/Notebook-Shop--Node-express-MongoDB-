@@ -2,7 +2,10 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const exphbs = require("express-handlebars");
-
+const homeRoutes = require("./routes/home");
+const aboutRoutes = require("./routes/about");
+const notebooksRoutes = require("./routes/notebooks");
+const addRoutes = require("./routes/add");
 // PORT
 const PORT = process.env.PORT || 5000;
 
@@ -18,21 +21,13 @@ app.set("view engine", "hbs");
 app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home Page", isHome: true });
-});
+// Routes
+app.use("/", homeRoutes);
+app.use("/notebooks", notebooksRoutes);
+app.use("/add", addRoutes);
+app.use("/about", aboutRoutes);
 
-app.get("/about", (req, res) => {
-  res.render("about", { title: "About Page", isAbout: true });
-});
-
-app.get("/notebooks", (req, res) => {
-  res.render("notebooks", { title: "Notebook Page", isNotebooks: true });
-});
-
-app.get("/add", (req, res) => {
-  res.render("add", { title: "Add Page", isAdd: true });
-});
+// Listen
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
 });
