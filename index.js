@@ -6,6 +6,8 @@ const homeRoutes = require("./routes/home");
 const aboutRoutes = require("./routes/about");
 const notebooksRoutes = require("./routes/notebooks");
 const addRoutes = require("./routes/add");
+const cardRoutes = require("./routes/card");
+
 // PORT
 const PORT = process.env.PORT || 5000;
 
@@ -27,6 +29,7 @@ app.use("/", homeRoutes);
 app.use("/notebooks", notebooksRoutes);
 app.use("/add", addRoutes);
 app.use("/about", aboutRoutes);
+app.use("/card", cardRoutes);
 
 // Listen
 app.listen(PORT, () => {

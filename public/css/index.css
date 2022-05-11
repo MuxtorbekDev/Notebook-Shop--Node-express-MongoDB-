@@ -31,3 +31,9 @@
   display: inline-block;
   margin: 2rem 0;
 }
+
+.card-action.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
