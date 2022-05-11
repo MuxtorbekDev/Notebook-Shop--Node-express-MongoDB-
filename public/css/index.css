@@ -19,3 +19,15 @@
 .card-content {
   flex-grow: 1;
 }
+.price {
+
+  font-size: 2rem;
+  font-weight: 700;
+}
+.notebookItem {
+  padding: 2rem 0;
+}
+.back {
+  display: inline-block;
+  margin: 2rem 0;
+}

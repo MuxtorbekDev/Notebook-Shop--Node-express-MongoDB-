@@ -12,4 +12,24 @@ router.get("/", async (req, res) => {
   });
 });
 
+router.get("/:id/edit", async (req, res) => {
+  if (!req.query.allow) {
+    return res.redirect("/");
+  }
+  const { id } = req.params;
+  const notebook = await Notebook.getById(id);
+  res.render("notebook-edit", { title: `Edit ${notebook.title}`, notebook });
+});
+
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const notebook = await Notebook.getById(id);
+
+  res.render("notebook", {
+    layout: "detail",
+    title: `${notebook.title} Notebook`,
+    notebook,
+  });
+});
+
 module.exports = router;

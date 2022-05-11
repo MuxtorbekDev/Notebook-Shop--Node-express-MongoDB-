@@ -8,12 +8,13 @@
       <img src="{{img}}" alt="{{title}}">
     </div>
     <div class="card-content">
-      <span class="card-title">{{title}}</span>
-      <b>{{price}}</b>
+      <h3 class="card-title title">{{title}}</h3>
       <p>{{descr}}</p>
+      <p class="price">{{price}}</p>
     </div>
     <div class="card-action">
-      <a href="/notebooks/{{id}}">Details</a>
+      <a href="/notebooks/{{id}}" target="_blank">Details</a>
+      <a href="/notebooks/{{id}}/edit?allow=true" >Edit</a>
     </div>
   </div>
 {{/each}}

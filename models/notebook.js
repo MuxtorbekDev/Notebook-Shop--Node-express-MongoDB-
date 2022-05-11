@@ -8,7 +8,6 @@ class Notebook {
     this.price = price;
     this.img = img;
     this.descr = descr;
-
     this.id = uuidv4();
   }
 
@@ -25,7 +24,7 @@ class Notebook {
   async save() {
     const notebooks = await Notebook.getAll();
     notebooks.push(this.toJSON());
-    console.log("Notebooks", notebooks);
+    // console.log("Notebooks", notebooks);
 
     return new Promise((resolve, reject) => {
       fs.writeFile(
@@ -56,6 +55,11 @@ class Notebook {
         }
       );
     });
+  }
+
+  static async getById(id) {
+    const notebooks = await Notebook.getAll();
+    return notebooks.find((n) => n.id === id);
   }
 }
 
