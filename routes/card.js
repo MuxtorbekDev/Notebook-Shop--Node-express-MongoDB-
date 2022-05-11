@@ -11,11 +11,20 @@ router.post("/add", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const card = await Card.fetch();
+
+  // Basket count
+  let fullItemCount = 0;
+  card.notebooks.forEach((item) => {
+    const notebookCount = item.count;
+    fullItemCount += +notebookCount;
+  });
+
   res.render("card", {
     title: `Basket`,
     isCard: true,
     notebooks: card.notebooks,
     price: card.price,
+    fullItemCount,
   });
 });
 

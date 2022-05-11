@@ -1,14 +1,24 @@
 const { Router } = require("express");
+const Card = require("../models/card");
 const Notebook = require("../models/notebook");
 const router = Router();
 
 router.get("/", async (req, res) => {
   const notebooks = await Notebook.getAll();
 
+  // Basket count
+  const card = await Card.fetch();
+  let fullItemCount = 0;
+  card.notebooks.forEach((item) => {
+    const notebookCount = item.count;
+    fullItemCount += +notebookCount;
+  });
+
   res.render("notebooks", {
     title: "Notebook Page",
     isNotebooks: true,
     notebooks,
+    fullItemCount,
   });
 });
 
