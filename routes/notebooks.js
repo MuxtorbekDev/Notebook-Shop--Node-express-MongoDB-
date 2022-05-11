@@ -21,6 +21,11 @@ router.get("/:id/edit", async (req, res) => {
   res.render("notebook-edit", { title: `Edit ${notebook.title}`, notebook });
 });
 
+router.post("/edit", async (req, res) => {
+  await Notebook.update(req.body);
+  res.redirect("/notebooks");
+});
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const notebook = await Notebook.getById(id);

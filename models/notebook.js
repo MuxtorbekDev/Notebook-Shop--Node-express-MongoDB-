@@ -21,6 +21,26 @@ class Notebook {
     };
   }
 
+  static async update(notebook) {
+    const notebooks = await Notebook.getAll();
+    const idx = notebooks.findIndex((n) => n.id === notebook.id);
+    notebooks[idx] = notebook;
+
+    return new Promise((resolve, reject) => {
+      fs.writeFile(
+        path.join(__dirname, "..", "data", "notebooks.json"),
+        JSON.stringify(notebooks),
+        (err) => {
+          if (err) {
+            throw err;
+          } else {
+            resolve();
+          }
+        }
+      );
+    });
+  }
+
   async save() {
     const notebooks = await Notebook.getAll();
     notebooks.push(this.toJSON());

@@ -1,6 +1,6 @@
 <h3>Edit Notebook {{ notebook.title }}</h3>
 
-<form class="form-control z-depth-2 " action="/notebook/edit" method="POST">
+<form class="form-control z-depth-2 " action="/notebooks/edit" method="POST">
 <div class="input-field">
   <input type="text" name="title" id="title" class="validate" value="{{notebook.title}}" required>
   <label for="title">Notebooks Model</label>
@@ -23,6 +23,8 @@
   <label for="descr">Description </label>
   <span class="helper-text" data-error="Enter Description"></span>
 </div>
+
+<input type="hidden" name="id" value="{{notebook.id}}"/>
 
 <button class="btn btn-primary">
   Add Notebooks
