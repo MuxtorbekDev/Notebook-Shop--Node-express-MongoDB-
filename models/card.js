@@ -36,6 +36,32 @@ class Card {
     });
   }
 
+  static async remove(id) {
+    const card = await Card.fetch();
+    const idx = card.notebooks.findIndex((c) => c.id === id);
+    const notebook = card.notebooks[idx];
+
+    if (notebook.count === 1) {
+      // delete
+      card.notebooks = card.notebooks.filter((c) => c.id !== id);
+    } else {
+      // edit quantity
+      card.notebooks[idx].count--;
+    }
+
+    card.price -= notebook.price;
+
+    return new Promise((resolve, reject) => {
+      fs.writeFile(pathToDb, JSON.stringify(card), (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(card);
+        }
+      });
+    });
+  }
+
   static async fetch() {
     return new Promise((resolve, reject) => {
       fs.readFile(pathToDb, "utf-8", (err, content) => {
