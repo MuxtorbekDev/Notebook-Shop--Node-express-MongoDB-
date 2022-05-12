@@ -2,14 +2,14 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const exphbs = require("express-handlebars");
+const mongoose = require("mongoose");
 const homeRoutes = require("./routes/home");
 const aboutRoutes = require("./routes/about");
 const notebooksRoutes = require("./routes/notebooks");
 const addRoutes = require("./routes/add");
 const cardRoutes = require("./routes/card");
 
-// PORT
-const PORT = process.env.PORT || 5000;
+const pas = `3vqzR5Jznwn7VRt7`;
 
 // Create engine
 const hbs = exphbs.create({
@@ -32,6 +32,20 @@ app.use("/about", aboutRoutes);
 app.use("/card", cardRoutes);
 
 // Listen
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}...`);
-});
+
+async function start() {
+  try {
+    const url =
+      "mongodb+srv://Muxtorbek:3vqzR5Jznwn7VRt7@cluster0.gsdaw.mongodb.net/NotebookShops";
+
+    mongoose.connect(url, { useNewUrlParser: true });
+    // PORT
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}...`);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+start();
