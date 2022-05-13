@@ -4,21 +4,22 @@ const Notebook = require("../models/notebook");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const notebooks = await Notebook.getAll();
+  // const { id } = req.params;
+  const notebooks = await Notebook.find();
 
-  // Basket count
-  const card = await Card.fetch();
-  let fullItemCount = 0;
-  card.notebooks.forEach((item) => {
-    const notebookCount = item.count;
-    fullItemCount += +notebookCount;
-  });
+  // // Basket count
+  // const card = await Card.fetch();
+  // let fullItemCount = 0;
+  // card.notebooks.forEach((item) => {
+  //   const notebookCount = item.count;
+  //   fullItemCount += +notebookCount;
+  // });
 
   res.render("notebooks", {
     title: "Notebook Page",
     isNotebooks: true,
     notebooks,
-    fullItemCount,
+    // fullItemCount,
   });
 });
 
@@ -27,18 +28,19 @@ router.get("/:id/edit", async (req, res) => {
     return res.redirect("/");
   }
   const { id } = req.params;
-  const notebook = await Notebook.getById(id);
+  const notebook = await Notebook.findById(id);
   res.render("notebook-edit", { title: `Edit ${notebook.title}`, notebook });
 });
 
 router.post("/edit", async (req, res) => {
-  await Notebook.update(req.body);
+  const { body } = req;
+  await Notebook.findByIdAndUpdate(body.id, body);
   res.redirect("/notebooks");
 });
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const notebook = await Notebook.getById(id);
+  const notebook = await Notebook.findById(id);
 
   res.render("notebook", {
     layout: "detail",

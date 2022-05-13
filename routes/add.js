@@ -7,15 +7,19 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
-  const notebook = new Notebook(
-    req.body.title,
-    req.body.price,
-    req.body.img,
-    req.body.descr
-  );
-  await notebook.save();
-  res.redirect("/notebooks");
+  const notebook = new Notebook({
+    title: req.body.title,
+    price: req.body.price,
+    img: req.body.img,
+    descr: req.body.descr,
+  });
+
+  try {
+    await notebook.save();
+    res.redirect("/notebooks");
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 module.exports = router;
