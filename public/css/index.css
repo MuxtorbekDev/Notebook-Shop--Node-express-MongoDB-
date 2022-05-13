@@ -4,6 +4,7 @@
 .form-control {
   border-radius: .5rem;
   padding: 2rem;
+  background-color: #fff
 }
 .content_notebook {
   display: grid;
@@ -88,4 +89,8 @@ body {
 }
 .text-center {
   text-align: center;
+}
+
+.remove-btn {
+  margin: 2rem ;
 }

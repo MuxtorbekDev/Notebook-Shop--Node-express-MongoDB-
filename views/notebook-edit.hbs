@@ -27,6 +27,12 @@
 <input type="hidden" name="id" value="{{notebook.id}}"/>
 
 <button class="btn btn-primary">
-  Add Notebooks
+  Edit Notebooks
+</button>
+</form>
+<form action="/notebooks/remove" method="POST">
+<input type="hidden" name="id" value="{{notebook.id}}">
+<button class="btn red remove-btn">
+  Remove Notebook
 </button>
 </form>

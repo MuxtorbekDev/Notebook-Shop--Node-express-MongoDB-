@@ -1,0 +1,61 @@
+[{
+  "title": "ASUS Laptop E510 22",
+  "price": "123456",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/l510-celeron-asus1.jpg",
+  "descr": "    CPU:\tIntel® Celeron® N4020 (1.1 GHz) (2-Core; 2-Thread)\r\nVideo card:\tIntel® UHD Graphics\r\nDDR4/Memory\t4GB/256GB SSD NVMe M.2\r\n  ",
+  "id": "4637af0b-da63-45b1-b7a8-09fe7f5777d8"
+}, {
+  "title": "Dell Vostro ",
+  "price": "1223",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/dell-vostro1.jpg",
+  "descr": "        CompareOrder in TG\r\nCPU:\tIntel® Core® i3-1115G4 (1.7 GHz – 4.1 GHz ) (2-Cores; 4-Threads)\r\nVideo card:\tIntel® UHD Graphics\r\nScreen:\t15.6″ FullHD IPS\r\n  \r\n  ",
+  "id": "c51ec0e9-5586-45a0-afdb-a9677e3607fb"
+}, {
+  "title": "MSI Bravo 15 (R7/RX5500M)",
+  "price": "123344",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/bravo-151.jpg",
+  "descr": "CPU:\tAMD Ryzen™ 7-4800H (2.9GHz – 4.2GHz) (8-Core; 16-Threads)\r\nVideo card:\tAMD Radeon RX 5500M 4GB/128bit/GDDR6\r\nScreen:\t15.6″ Full HD IPS, 144Hz, Wide-View",
+  "id": "3a266ca6-02b9-4345-80ab-67dc8adbb9cc"
+}, {
+  "title": "ASUS Laptop E510 (N4020)",
+  "price": "33333",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/l510-celeron-asus1.jpg",
+  "descr": "\r\nCPU:\tIntel® Celeron® N4020 (1.1 GHz) (2-Core; 2-Thread)\r\nVideo card:\tIntel® UHD Graphics\r\nDDR4/Memory\t4GB/256GB SSD NVMe M.",
+  "id": "9c18c332-6bc0-486a-9982-2271855189d6"
+}, {
+  "title": "Asus VivoBook K513 (i5-1135G7/Silver)",
+  "price": "1100",
+  "img": "https://nout.uz/wp-content/uploads/2022/03/k513-vivobook-silver3.jpg",
+  "descr": "CPU:\tIntel® Core® i5-1135G7 (2.4 GHz – 4.2 GHz ) (4-Cores; 8-Threads)\r\nVideo card:\tIntel® Iris Xe Graphics\r\nScreen:\t15.6″ FullHD IPS",
+  "id": "5d32fa1b-aa68-4567-a6b9-8e348a9225b3"
+}, {
+  "title": "Asus Laptop E210",
+  "price": "2333",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/e210-asus1.jpg",
+  "descr": "\r\nPorts\t\r\n1x USB 2.0 Type-A\r\n1x USB 3.2 Gen1 Type-A\r\n1x USB 3.2 Gen1 Type-C\r\n1x HDMI 1.4\r\n1x 3.5mm combo audio jack\r\n1x power jack\r\nMicro SD card reader (optional)",
+  "id": "e50f5d8e-f75a-4840-b074-d6fcb119d8e3"
+}, {
+  "title": "Dell Vostro (i3-1115G4)",
+  "price": "5472000",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/dell-vostro1.jpg",
+  "descr": "Webcam\t\r\nhdwebcam\r\nAudio\t\r\nRealtek ALC3204\r\nPorts\t\r\n1 USB 2.0, 1 USB 3.2 Gen 1 Type-C™ (optional with dedicated graphics), 1 HDMI 1.4, 1 RJ-45 Ethernet, 2 USB 3.2 Gen 1 Type-A, 1 headset jack",
+  "id": "b2bd3491-31b3-49ff-8423-70bd711a5a70"
+}, {
+  "title": "MSI Katana GF76 (i7-11800H/RTX3060)",
+  "price": "19380000",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/gf76-katana1.jpg",
+  "descr": "CPU:\tIntel® Core™ i7-11800H (2.3GHz – 4.6GHz) (8-Core; 16-Threads)\r\nVideo card:\tGeForce® RTX 3060 6GB/192Bit/GDDR6 NVIDIA®\r\nScreen:\t17.3″ Full HD IPS-level 144Hz",
+  "id": "00e667f1-9b5f-48c8-b460-633f8ce2c428"
+}, {
+  "title": "ASUS Laptop E510 (N4020)",
+  "price": "2000",
+  "img": "https://nout.uz/wp-content/uploads/2021/11/l510-celeron-asus1.jpg",
+  "descr": "    1x USB 2.0 Type-A, 1x USB 3.2 Gen 1 Type-A, 1x USB 3.2 Gen 1 Type-C, 1x HDMI 1.4, 1x 3.5mm Combo Audio Jack, 1x DC-in, Micro SD card reader (on selected model)\r\n  ",
+  "id": "8e50d726-f452-4490-bd12-c3db4d6d2cb9"
+}, {
+  "title": "ASUS ROG Strix SCAR 15 (i9-12900H/RTX3070Ti)",
+  "price": "22000",
+  "img": "https://nout.uz/wp-content/uploads/2022/02/g533-rog-scar1.jpg",
+  "descr": "Ports\t\r\n1x HDMI 2.1, 1x Thunderbolt 4 (DisplayPort support), 1x USB 3.2 Gen 2 Type-C (DisplayPort/ Power delivery/ G-SYNC), 2x USB 3.2 Gen 2 Type-A, 1x RJ45",
+  "id": "102f0ed7-d1be-440d-9dff-b888ad9b406a"
+}]

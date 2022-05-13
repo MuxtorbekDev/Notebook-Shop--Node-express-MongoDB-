@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const Card = require("../models/card");
+// const Card = require("../models/card");
 const Notebook = require("../models/notebook");
 const router = Router();
 
@@ -47,6 +47,15 @@ router.get("/:id", async (req, res) => {
     title: `${notebook.title} Notebook`,
     notebook,
   });
+});
+
+router.post("/remove", async (req, res) => {
+  try {
+    await Notebook.deleteOne({ _id: req.body.id });
+    res.redirect("/notebooks");
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 module.exports = router;
