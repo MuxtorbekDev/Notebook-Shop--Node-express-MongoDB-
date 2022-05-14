@@ -4,22 +4,15 @@ const Notebook = require("../models/notebook");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  // const { id } = req.params;
-  const notebooks = await Notebook.find();
+  const notebooks = await Notebook.find()
+    .populate("userId", "email name")
+    .select("price title img descr");
 
-  // // Basket count
-  // const card = await Card.fetch();
-  // let fullItemCount = 0;
-  // card.notebooks.forEach((item) => {
-  //   const notebookCount = item.count;
-  //   fullItemCount += +notebookCount;
-  // });
-
+  console.log(notebooks);
   res.render("notebooks", {
     title: "Notebook Page",
     isNotebooks: true,
     notebooks,
-    // fullItemCount,
   });
 });
 
@@ -59,3 +52,11 @@ router.post("/remove", async (req, res) => {
 });
 
 module.exports = router;
+
+// // Basket count
+// const card = await Card.fetch();
+// let fullItemCount = 0;
+// card.notebooks.forEach((item) => {
+//   const notebookCount = item.count;
+//   fullItemCount += +notebookCount;
+// });

@@ -12,6 +12,7 @@ const aboutRoutes = require("./routes/about");
 const notebooksRoutes = require("./routes/notebooks");
 const addRoutes = require("./routes/add");
 const cardRoutes = require("./routes/card");
+const User = require("./models/user");
 
 const pas = `3vqzR5Jznwn7VRt7`;
 
@@ -28,6 +29,15 @@ app.set("view engine", "hbs");
 app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(async (req, res, next) => {
+  try {
+    const user = await User.findById("627f237c8892a647805e43e0");
+    req.user = user;
+    next();
+  } catch (e) {
+    console.log(e);
+  }
+});
 
 // Routes
 app.use("/", homeRoutes);
@@ -42,8 +52,21 @@ async function start() {
   try {
     const url =
       "mongodb+srv://Muxtorbek:3vqzR5Jznwn7VRt7@cluster0.gsdaw.mongodb.net/NotebookShops";
+    await mongoose.connect(url, { useNewUrlParser: true });
 
-    mongoose.connect(url, { useNewUrlParser: true });
+    // Candidate
+    const candidate = await User.findOne();
+
+    if (!candidate) {
+      const user = new User({
+        email: "muxtor&gmail.com",
+        name: "Muxtorbek",
+        cart: { items: [] },
+      });
+
+      await user.save();
+    }
+
     // PORT
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
