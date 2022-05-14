@@ -8,7 +8,6 @@ router.get("/", async (req, res) => {
     .populate("userId", "email name")
     .select("price title img descr");
 
-  console.log(notebooks);
   res.render("notebooks", {
     title: "Notebook Page",
     isNotebooks: true,
