@@ -1,11 +1,3 @@
-// const priceNotebook = document.querySelectorAll(".price");
-
-// priceNotebook.forEach((item) => {
-//   item.textContent = new Intl.NumberFormat("us-Us", {
-//     currency: "USD",
-//     style: "currency",
-//   }).format(item);
-// });
 const toCurrency = (price) => {
   return new Intl.NumberFormat("us-US", {
     currency: "USD",
@@ -15,6 +7,21 @@ const toCurrency = (price) => {
 
 document.querySelectorAll(".price").forEach((m) => {
   m.textContent = toCurrency(m.textContent);
+});
+
+const toDate = (date) => {
+  return new Intl.DateTimeFormat("en-US", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(new Date(date));
+};
+
+document.querySelectorAll(".date").forEach((item) => {
+  item.textContent = toDate(item.textContent);
 });
 
 const $card = document.querySelector("#card");

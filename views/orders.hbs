@@ -1,1 +1,49 @@
-<h1>Orders</h1>
+
+{{#if orders.length}}
+
+{{#each orders}}
+<div class="orders">
+  <article class="card">
+        <header class="card-header"> <h5>My Orders / Tracking</h5> </header>
+        <div class="card-body">
+            <h6><b>Order ID:</b> {{_id}}</h6>
+            <article class="card">
+                <div class="card-body row">
+                    <div class="col"> <strong><b>Estimated Delivery time:</b></strong> <br><p class="date">{{date}}</p> </div>
+                    <div class="col"> <strong><b>Shipping BY:</b></strong> <br> {{user.userId.name}} </div>
+                    <div class="col"> <strong><b>Email:</b></strong> <br> {{user.userId.email}}  </div>
+                    <div class="col"> <strong><b>Public Price:</b></strong> <br> <p class="price">{{price}}</p> </div>
+                </div>
+            </article>
+            <div class="track">
+                <div class="step active"> <span class="icon"> <i class="fa fa-check">1</i> </span> <span class="text">Order confirmed</span> </div>
+                <div class="step active"> <span class="icon"> <i class="fa fa-user">2</i> </span> <span class="text"> Picked by courier</span> </div>
+                <div class="step"> <span class="icon"> <i class="fa fa-truck">3</i> </span> <span class="text"> On the way </span> </div>
+                <div class="step"> <span class="icon"> <i class="fa fa-box">4</i> </span> <span class="text">Ready for pickup</span> </div>
+            </div>
+            <hr>
+            <ul class="row">
+              {{#each notebooks}}
+                <li class="col-md-4">
+                    <figure class="itemside mb-3">
+                        <div class="aside"><img src="{{notebook.img}}" class="img-sm border"></div>
+                        <figcaption class="info align-self-center">
+                            <p class="title">{{notebook.title}}</p> <span class="text-muted"> <p class="price">{{notebook.price}}</p>  </span>
+                            <p class="count">Count: x {{count}}</p>
+                        </figcaption>
+                    </figure>
+                </li>
+                {{/each}}
+            </ul>
+            <hr>
+            <a href="/notebooks" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> BACK TO ORDERS</a>
+            <a href="/orders" class="btn blue" data-abc="true"> <i class="fa fa-chevron-left"></i> PLACE ORDERS  </a>
+        </div>
+    </article>
+</div>
+{{/each}}
+
+{{else}}
+<p>Not found</p>
+
+{{/if}}

@@ -2,11 +2,20 @@ const { Router } = require("express");
 const Order = require("../models/orders");
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   try {
+    const orders = await Order.find({ "user.userId": req.user._id }).populate(
+      "user.userId"
+    );
     res.render("orders", {
       isOrder: true,
       title: "Now Orders",
+      orders: orders.map((m) => ({
+        ...m._doc,
+        price: m.notebooks.reduce((total, c) => {
+          return (total += c.count * c.notebook.price);
+        }, 0),
+      })),
     });
   } catch (e) {
     console.log(e);
