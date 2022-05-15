@@ -37,6 +37,13 @@
         {{else}}
           <li ><a href="/card">Basket <sup>{{fullItemCount}}</sup> </a></li>
         {{/if}}
+
+                       {{!-- Order --}}
+        {{#if isOrder}}
+          <li class="active"  ><a href="/orders">Order Now <sup>{{fullItemCount}}</sup> </a></li>
+        {{else}}
+          <li ><a href="/orders">Order <sup>{{fullItemCount}}</sup> </a></li>
+        {{/if}}
         
       </ul>
 
