@@ -40,11 +40,17 @@
 
                        {{!-- Order --}}
         {{#if isOrder}}
-          <li class="active"  ><a href="/orders">Order Now <sup>{{fullItemCount}}</sup> </a></li>
+          <li class="active"  ><a href="/orders">Order Now </a></li>
         {{else}}
-          <li ><a href="/orders">Order <sup>{{fullItemCount}}</sup> </a></li>
+          <li ><a href="/orders">Order  </a></li>
         {{/if}}
         
+                               {{!-- Login --}}
+        {{#if isLogin}}
+          <li class="active"  ><a href="/auth/login#login">Log IN  </a></li>
+        {{else}}
+          <li ><a href="/auth/login#login">Log IN  </a></li>
+        {{/if}}
       </ul>
 
     </div>

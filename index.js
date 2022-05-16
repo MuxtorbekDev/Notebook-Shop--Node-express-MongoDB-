@@ -13,9 +13,10 @@ const notebooksRoutes = require("./routes/notebooks");
 const addRoutes = require("./routes/add");
 const cardRoutes = require("./routes/card");
 const ordersRoutes = require("./routes/orders");
+const authRouter = require("./routes/auth");
 const User = require("./models/user");
 
-const pas = `3vqzR5Jznwn7VRt7`;
+// const pas = `3vqzR5Jznwn7VRt7`;
 
 // Create engine
 const hbs = exphbs.create({
@@ -47,6 +48,7 @@ app.use("/add", addRoutes);
 app.use("/about", aboutRoutes);
 app.use("/card", cardRoutes);
 app.use("/orders", ordersRoutes);
+app.use("/auth", authRouter);
 
 // Listen
 
