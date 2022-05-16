@@ -7,6 +7,7 @@ const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
 const mongoose = require("mongoose");
+const session = require("express-session");
 const homeRoutes = require("./routes/home");
 const aboutRoutes = require("./routes/about");
 const notebooksRoutes = require("./routes/notebooks");
@@ -15,6 +16,7 @@ const cardRoutes = require("./routes/card");
 const ordersRoutes = require("./routes/orders");
 const authRouter = require("./routes/auth");
 const User = require("./models/user");
+const varMiddleware = require("./middleware/var");
 
 // const pas = `3vqzR5Jznwn7VRt7`;
 
@@ -41,6 +43,15 @@ app.use(async (req, res, next) => {
   }
 });
 
+app.use(
+  session({
+    secret: "my secret variable",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(varMiddleware);
+
 // Routes
 app.use("/", homeRoutes);
 app.use("/notebooks", notebooksRoutes);
@@ -51,7 +62,6 @@ app.use("/orders", ordersRoutes);
 app.use("/auth", authRouter);
 
 // Listen
-
 async function start() {
   try {
     const url =
@@ -63,11 +73,10 @@ async function start() {
 
     if (!candidate) {
       const user = new User({
-        email: "muxtor&gmail.com",
+        email: "muxtor@gmail.com",
         name: "Muxtorbek",
         cart: { items: [] },
       });
-
       await user.save();
     }
 

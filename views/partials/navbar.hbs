@@ -17,12 +17,7 @@
          <li ><a href="/notebooks">Notebooks</a></li>
         {{/if}}
 
-               {{!-- Add Notebook --}}
-        {{#if isAdd}}
-          <li class="active" ><a href="/add">Add Notebook</a></li>
-        {{else}}
-          <li><a href="/add">Add Notebook</a></li>
-        {{/if}}
+
         
                 {{!-- About --}}
         {{#if isAbout}}
@@ -30,26 +25,40 @@
         {{else}}
           <li ><a href="/about">About</a></li>
         {{/if}}
-       
-               {{!-- Basket --}}
-        {{#if isCard}}
-          <li class="active"  ><a href="/card">Basket <sup>{{fullItemCount}}</sup> </a></li>
-        {{else}}
-          <li ><a href="/card">Basket <sup>{{fullItemCount}}</sup> </a></li>
-        {{/if}}
 
-               {{!-- Order --}}
-        {{#if isOrder}}
-          <li class="active"  ><a href="/orders">Order Now </a></li>
+        {{#if isAuth}}
+                  {{!-- Add Notebook --}}
+            {{#if isAdd}}
+              <li class="active" ><a href="/add">Add Notebook</a></li>
+            {{else}}
+              <li><a href="/add">Add Notebook</a></li>
+            {{/if}}
+
+                  {{!-- Logout --}}
+
+                  {{!-- Basket --}}
+            {{#if isCard}}
+              <li class="active"  ><a href="/card">Basket <sup>{{fullItemCount}}</sup> </a></li>
+            {{else}}
+              <li ><a href="/card">Basket <sup>{{fullItemCount}}</sup> </a></li>
+            {{/if}}
+
+                  {{!-- Order --}}
+            {{#if isOrder}}
+              <li class="active"  ><a href="/orders">Order Now </a></li>
+            {{else}}
+              <li ><a href="/orders">Order  </a></li>
+            {{/if}}
+            
+            <li ><a href="/auth/logout">Log Out</a></li>
         {{else}}
-          <li ><a href="/orders">Order  </a></li>
-        {{/if}}
-        
-               {{!-- Login --}}
-        {{#if isLogin}}
-          <li class="active"  ><a href="/auth/login#login">Log IN  </a></li>
-        {{else}}
-          <li ><a href="/auth/login#login">Log IN  </a></li>
+                        {{!-- Login --}}
+          {{#if isLogin}}
+            <li class="active"  ><a href="/auth/login#login">Log IN  </a></li>
+          {{else}}
+            <li ><a href="/auth/login#login">Log IN  </a></li>
+          {{/if}}
+
         {{/if}}
       </ul>
     </div>
