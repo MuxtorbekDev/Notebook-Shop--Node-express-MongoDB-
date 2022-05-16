@@ -260,3 +260,8 @@ body {
 .auth {
   padding-top: 1rem;
 }
+
+.auth form {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}

@@ -6,6 +6,46 @@
 
     </ul>
   </div>
-  <div id="login" class="col s6 offset-s6">Test 1</div>
-  <div id="register" class="col s6 offset-s6">Test 2</div>
+  <div id="login" class="col s6 offset-s3">
+    <form class="form-control z-depth-1 " action="/add" method="POST">
+    <h5>Log In Notebook Store</h5>
+    <div class="input-field">
+      <input type="email" name="email" id="email" class="validate" required>
+      <label for="email">Your Email</label>
+      <span class="helper-text" data-error="Enter  Your Email"></span>
+    </div>
+    <div class="input-field">
+      <input type="password" name="password" id="password" class="validate" required>
+      <label for="password">Your Password </label>
+      <span class="helper-text" data-error="Enter Password "></span>
+    </div>
+    <button type="submit" class="btn btn-primary">
+      Log IN
+    </button>
+    </form>
+  </div>
+  <div id="register" class="col s6 offset-s3">
+        <form class="form-control z-depth-1 " action="/add" method="POST">
+    <h5>Create Account Now</h5>
+    <div class="input-field">
+      <input type="email" name="email" id="rEmail" class="validate" required>
+      <label for="rEmail">Your Email</label>
+      <span class="helper-text" data-error="Enter  Your Email"></span>
+    </div>
+    <div class="input-field">
+      <input type="password" name="password" id="rPassword" class="validate" required>
+      <label for="rPassword">Your Password </label>
+      <span class="helper-text" data-error="Enter Password "></span>
+    </div>
+
+        <div class="input-field">
+      <input type="password" name="password" id="confirm" class="validate" required>
+      <label for="confirm">Your Password Again </label>
+      <span class="helper-text" data-error="Enter Password Again "></span>
+    </div>
+    <button type="submit" class="btn btn-primary">
+      Sign IN
+    </button>
+    </form>
+  </div>
 </div>

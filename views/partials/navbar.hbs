@@ -3,28 +3,28 @@
       <a href="/" class="brand-logo">Notebook Shop</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        {{!-- Home --}}
+              {{!-- Home --}}
         {{#if isHome}}
           <li class="active"><a href="/">Home</a></li>
         {{else}}
           <li class=""><a href="/">Home</a></li>
         {{/if}}
 
-        {{!-- Notebooks --}}
+              {{!-- Notebooks --}}
         {{#if isNotebooks}}
          <li  class="active" ><a href="/notebooks">Notebooks</a></li>
         {{else}}
          <li ><a href="/notebooks">Notebooks</a></li>
         {{/if}}
 
-        {{!-- Add Notebook --}}
+               {{!-- Add Notebook --}}
         {{#if isAdd}}
           <li class="active" ><a href="/add">Add Notebook</a></li>
         {{else}}
           <li><a href="/add">Add Notebook</a></li>
         {{/if}}
         
-        {{!-- About --}}
+                {{!-- About --}}
         {{#if isAbout}}
           <li class="active"  ><a href="/about">About</a></li>
         {{else}}
@@ -38,20 +38,19 @@
           <li ><a href="/card">Basket <sup>{{fullItemCount}}</sup> </a></li>
         {{/if}}
 
-                       {{!-- Order --}}
+               {{!-- Order --}}
         {{#if isOrder}}
           <li class="active"  ><a href="/orders">Order Now </a></li>
         {{else}}
           <li ><a href="/orders">Order  </a></li>
         {{/if}}
         
-                               {{!-- Login --}}
+               {{!-- Login --}}
         {{#if isLogin}}
           <li class="active"  ><a href="/auth/login#login">Log IN  </a></li>
         {{else}}
           <li ><a href="/auth/login#login">Log IN  </a></li>
         {{/if}}
       </ul>
-
     </div>
   </nav>
