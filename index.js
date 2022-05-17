@@ -17,6 +17,7 @@ const ordersRoutes = require("./routes/orders");
 const authRouter = require("./routes/auth");
 const User = require("./models/user");
 const varMiddleware = require("./middleware/var");
+const userMiddleware = require("./middleware/user");
 
 const MongoStore = require("connect-mongodb-session")(session);
 
@@ -61,7 +62,10 @@ app.use(
     store,
   })
 );
+
+// Middleware
 app.use(varMiddleware);
+app.use(userMiddleware);
 
 // Routes
 app.use("/", homeRoutes);
