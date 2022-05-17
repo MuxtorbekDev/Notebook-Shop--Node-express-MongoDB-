@@ -17,8 +17,12 @@ const ordersRoutes = require("./routes/orders");
 const authRouter = require("./routes/auth");
 const User = require("./models/user");
 const varMiddleware = require("./middleware/var");
+const MongoStore = require("connect-mongodb-session")(session);
 
 // const pas = `3vqzR5Jznwn7VRt7`;
+
+const MONGODB_URI =
+  "mongodb+srv://Muxtorbek:3vqzR5Jznwn7VRt7@cluster0.gsdaw.mongodb.net/NotebookShops";
 
 // Create engine
 const hbs = exphbs.create({
@@ -28,26 +32,32 @@ const hbs = exphbs.create({
 });
 app.engine("hbs", hbs.engine);
 
+const store = new MongoStore({
+  collection: "session",
+  uri: MONGODB_URI,
+});
+
 // app use
 app.set("view engine", "hbs");
 app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-app.use(async (req, res, next) => {
-  try {
-    const user = await User.findById("627f237c8892a647805e43e0");
-    req.user = user;
-    next();
-  } catch (e) {
-    console.log(e);
-  }
-});
+// app.use(async (req, res, next) => {
+//   try {
+//     const user = await User.findById("627f237c8892a647805e43e0");
+//     req.user = user;
+//     next();
+//   } catch (e) {
+//     console.log(e);
+//   }
+// });
 
 app.use(
   session({
     secret: "my secret variable",
     resave: false,
     saveUninitialized: false,
+    store,
   })
 );
 app.use(varMiddleware);
@@ -64,21 +74,19 @@ app.use("/auth", authRouter);
 // Listen
 async function start() {
   try {
-    const url =
-      "mongodb+srv://Muxtorbek:3vqzR5Jznwn7VRt7@cluster0.gsdaw.mongodb.net/NotebookShops";
-    await mongoose.connect(url, { useNewUrlParser: true });
+    await mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
     // Candidate
-    const candidate = await User.findOne();
+    // const candidate = await User.findOne();
 
-    if (!candidate) {
-      const user = new User({
-        email: "muxtor@gmail.com",
-        name: "Muxtorbek",
-        cart: { items: [] },
-      });
-      await user.save();
-    }
+    // if (!candidate) {
+    //   const user = new User({
+    //     email: "muxtor@gmail.com",
+    //     name: "Muxtorbek",
+    //     cart: { items: [] },
+    //   });
+    //   await user.save();
+    // }
 
     // PORT
     const PORT = process.env.PORT || 5000;

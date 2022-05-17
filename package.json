@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
+    "connect-mongodb-session": "^3.1.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.5",
     "express-hbs": "^2.4.0",
