@@ -3,30 +3,66 @@ const router = Router();
 const User = require("../models/user");
 
 router.get("/login", (req, res) => {
-  res.render("auth/login", {
-    title: "Register",
-    isLogin: true,
-  });
-});
-
-router.get("/logout", async (req, res) => {
-  try {
-    req.session.destroy(() => {
-      res.redirect("/auth/login#login");
+    res.render("auth/login", {
+        title: "Register",
+        isLogin: true,
     });
-  } catch (e) {
-    console.log(e);
-  }
 });
 
-router.post("/login", async (req, res) => {
-  const user = await User.findById("627f237c8892a647805e43e0");
-  req.session.user = user;
-  req.session.isAuthenticated = true;
-  req.session.save((err) => {
-    if (err) throw err;
-    res.redirect("/");
-  });
+router.get("/logout", async(req, res) => {
+    try {
+        req.session.destroy(() => {
+            res.redirect("/auth/login#login");
+        });
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+router.post("/login", async(req, res) => {
+    try {
+        const { email, password } = req.body;
+        const candidate = await User.findOne({ email });
+        console.log(candidate);
+        if (candidate) {
+            const userPas = password === candidate.password;
+            if (userPas) {
+                req.session.user = candidate;
+                req.session.isAuthenticated = true;
+                req.session.save((err) => {
+                    console.log(err);
+                    if (err) throw err;
+                    res.redirect("/");
+                });
+            }
+        } else {
+            res.redirect("/auth/login#login");
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+router.post("/register", async(req, res) => {
+    try {
+        const { email, name, password } = req.body;
+        const candidate = await User.findOne({ email });
+        if (candidate) {
+            res.redirect("/auth/login#register");
+        } else {
+            const user = new User({
+                email: email,
+                name: name,
+                password: password,
+                cart: { items: [] },
+            });
+
+            await user.save();
+            res.redirect("/auth/login#login");
+        }
+    } catch (e) {
+        console.log(e);
+    }
 });
 
 module.exports = router;

@@ -28,6 +28,11 @@
         <form class="form-control z-depth-1 " action="/auth/register" method="POST">
     <h5>Create Account Now</h5>
     <div class="input-field">
+      <input type="text" name="name" id="name" class="validate" required>
+      <label for="name">Your Name</label>
+      <span class="helper-text" data-error="Enter  Your Name"></span>
+    </div>
+    <div class="input-field">
       <input type="email" name="email" id="rEmail" class="validate" required>
       <label for="rEmail">Your Email</label>
       <span class="helper-text" data-error="Enter  Your Email"></span>
@@ -37,9 +42,8 @@
       <label for="rPassword">Your Password </label>
       <span class="helper-text" data-error="Enter Password "></span>
     </div>
-
-        <div class="input-field">
-      <input type="password" name="password" id="confirm" class="validate" required>
+    <div class="input-field">
+      <input type="password" name="rePassword" id="confirm" class="validate" required>
       <label for="confirm">Your Password Again </label>
       <span class="helper-text" data-error="Enter Password Again "></span>
     </div>
