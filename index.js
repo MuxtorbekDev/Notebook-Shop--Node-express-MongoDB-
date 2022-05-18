@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const flash = require("connect-flash");
 const app = express();
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
@@ -62,6 +63,7 @@ app.use(
     store,
   })
 );
+app.use(flash());
 
 // Middleware
 app.use(varMiddleware);

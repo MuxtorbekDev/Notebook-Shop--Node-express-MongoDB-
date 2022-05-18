@@ -7,6 +7,8 @@ router.get("/login", (req, res) => {
   res.render("auth/login", {
     title: "Register",
     isLogin: true,
+    regError: req.flash("error"),
+    loginError: req.flash("loginError"),
   });
 });
 
@@ -24,22 +26,25 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const candidate = await User.findOne({ email });
-    console.log(candidate);
     if (candidate) {
-      const userPas = bcrypt.compare(password, candidate.password);
+      const userPas = await bcrypt.compare(password, candidate.password);
       if (userPas) {
         req.session.user = candidate;
         req.session.isAuthenticated = true;
         req.session.save((err) => {
-          console.log(err);
           if (err) throw err;
           res.redirect("/");
         });
+      } else {
+        req.flash("loginError", "Password Xato!");
+        res.redirect("/auth/login#login");
       }
     } else {
+      req.flash("loginError", "Bu email ruyxatdan o'tmagan!");
       res.redirect("/auth/login#login");
     }
   } catch (e) {
+    req.flash("loginError", "This username is already exist");
     console.log(e);
   }
 });
@@ -51,10 +56,10 @@ router.post("/register", async (req, res) => {
     const candidate = await User.findOne({ email });
 
     if (candidate) {
+      req.flash("error", "Bu email ruyxatdan utgan!");
       res.redirect("/auth/login#register");
     } else {
       const hashPass = await bcrypt.hash(password, 12);
-      console.log(hashPass);
       const user = new User({
         email: email,
         name: name,

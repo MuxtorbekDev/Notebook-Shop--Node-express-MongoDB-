@@ -7,8 +7,12 @@
     </ul>
   </div>
   <div id="login" class="col s8 offset-s2">
+
     <form class="form-control z-depth-1 " action="/auth/login" method="POST">
     <h5>Log In Notebook Store</h5>
+    {{#if loginError}}
+      <p class="alert">{{loginError}}</p>
+    {{/if}}
     <div class="input-field">
       <input type="email" name="email" id="email" class="validate" required>
       <label for="email">Your Email</label>
@@ -25,8 +29,11 @@
     </form>
   </div>
   <div id="register" class="col s8 offset-s2">
-        <form class="form-control z-depth-1 " action="/auth/register" method="POST">
-    <h5>Create Account Now</h5>
+    <form class="form-control z-depth-1 " action="/auth/register" method="POST">
+      <h5>Create Account Now</h5>
+      {{#if regError}}
+        <p class="alert">{{regError}}</p>
+      {{/if}}
     <div class="input-field">
       <input type="text" name="name" id="name" class="validate" required>
       <label for="name">Your Name</label>
