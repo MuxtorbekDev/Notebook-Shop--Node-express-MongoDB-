@@ -5,24 +5,38 @@ const auth = require("../middleware/auth");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const notebooks = await Notebook.find()
-    .populate("userId", "email name")
-    .select("price title img descr");
-
-  res.render("notebooks", {
-    title: "Notebook Page",
-    isNotebooks: true,
-    notebooks,
-  });
+  try {
+    const notebooks = await Notebook.find()
+      .populate("userId", "email name")
+      .select("price title img descr");
+    res.render("notebooks", {
+      title: "Notebook Page",
+      isNotebooks: true,
+      userId: req.user ? req.user._id.toString() : null,
+      notebooks,
+    });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 router.get("/:id/edit", auth, async (req, res) => {
   if (!req.query.allow) {
     return res.redirect("/");
   }
-  const { id } = req.params;
-  const notebook = await Notebook.findById(id);
-  res.render("notebook-edit", { title: `Edit ${notebook.title}`, notebook });
+  try {
+    const { id } = req.params;
+    const notebook = await Notebook.findById(id);
+    if (notebook.userId.toString() !== req.user._id.toString()) {
+      return res.redirect("/notebooks");
+    }
+    res.render("notebook-edit", {
+      title: `Edit ${notebook.title}`,
+      notebook,
+    });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 router.post("/edit", auth, async (req, res) => {

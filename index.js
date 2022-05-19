@@ -31,6 +31,7 @@ const MONGODB_URI =
 const hbs = exphbs.create({
   defaultLayout: "main",
   extname: "hbs",
+  helpers: require("./utils/index"),
   handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
 app.engine("hbs", hbs.engine);

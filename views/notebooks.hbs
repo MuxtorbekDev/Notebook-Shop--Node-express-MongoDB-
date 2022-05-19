@@ -15,7 +15,9 @@
     <div class="card-action actions">
       <a href="/notebooks/{{id}}" target="_blank">Details</a>
       {{#if @root.isAuth}}
+      {{#ifEq userId._id  @root.userId}}
         <a href="/notebooks/{{id}}/edit?allow=true" >Edit</a>
+      {{/ifEq}}
         <form action="/card/add" method="POST">
         <input type="hidden" name="id" value="{{id}}">
           <button type="submit" class="btn btn-primary">Buy</button>
