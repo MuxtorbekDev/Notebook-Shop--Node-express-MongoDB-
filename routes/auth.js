@@ -1,5 +1,7 @@
 const { Router } = require("express");
 const router = Router();
+const { body, validationResult } = require("express-validator");
+const { registerValidators } = require("../utils/validators");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 
@@ -7,7 +9,7 @@ router.get("/login", (req, res) => {
   res.render("auth/login", {
     title: "Register",
     isLogin: true,
-    regError: req.flash("error"),
+    regError: req.flash("regError"),
     loginError: req.flash("loginError"),
   });
 });
@@ -49,14 +51,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", registerValidators, async (req, res) => {
   try {
     const { email, name, password } = req.body;
-
     const candidate = await User.findOne({ email });
 
+    const errors = validationResult(req);
+    console.log(errors);
+    if (!errors.isEmpty()) {
+      req.flash("regError", errors.array()[0].msg);
+      return res.status(422).redirect("/auth/login#register");
+    }
+
     if (candidate) {
-      req.flash("error", "Bu email ruyxatdan utgan!");
+      req.flash("regError", "Bu email ruyxatdan utgan!");
       res.redirect("/auth/login#register");
     } else {
       const hashPass = await bcrypt.hash(password, 12);

@@ -29,7 +29,7 @@
     </form>
   </div>
   <div id="register" class="col s8 offset-s2">
-    <form class="form-control z-depth-1 " action="/auth/register" method="POST">
+    <form class="form-control z-depth-1 " action="/auth/register" novalidate method="POST">
       <h5>Create Account Now</h5>
       {{#if regError}}
         <p class="alert">{{regError}}</p>
@@ -50,7 +50,7 @@
       <span class="helper-text" data-error="Enter Password "></span>
     </div>
     <div class="input-field">
-      <input type="password" name="rePassword" id="confirm" class="validate" required>
+      <input type="password" name="confirm" id="confirm" class="validate" required>
       <label for="confirm">Your Password Again </label>
       <span class="helper-text" data-error="Enter Password Again "></span>
     </div>
