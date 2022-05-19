@@ -53,31 +53,30 @@ router.post("/login", async (req, res) => {
 
 router.post("/register", registerValidators, async (req, res) => {
   try {
-    const { email, name, password } = req.body;
-    const candidate = await User.findOne({ email });
-
+    const { email, name, password, confirm } = req.body;
     const errors = validationResult(req);
-    console.log(errors);
+    // console.log(errors);
     if (!errors.isEmpty()) {
       req.flash("regError", errors.array()[0].msg);
       return res.status(422).redirect("/auth/login#register");
     }
+    const hashPass = await bcrypt.hash(password, 12);
+    const user = new User({
+      email: email,
+      name: name,
+      password: hashPass,
+      cart: { items: [] },
+    });
 
-    if (candidate) {
-      req.flash("regError", "Bu email ruyxatdan utgan!");
-      res.redirect("/auth/login#register");
-    } else {
-      const hashPass = await bcrypt.hash(password, 12);
-      const user = new User({
-        email: email,
-        name: name,
-        password: hashPass,
-        cart: { items: [] },
-      });
+    await user.save();
+    res.redirect("/auth/login#login");
 
-      await user.save();
-      res.redirect("/auth/login#login");
-    }
+    // if (candidate) {
+    //   req.flash("regError", "Bu email ruyxatdan utgan!");
+    //   res.redirect("/auth/login#register");
+    // } else {
+
+    // }
   } catch (e) {
     console.log(e);
   }
