@@ -16,6 +16,7 @@ const addRoutes = require("./routes/add");
 const cardRoutes = require("./routes/card");
 const ordersRoutes = require("./routes/orders");
 const authRouter = require("./routes/auth");
+const profileRouter = require("./routes/profile");
 const varMiddleware = require("./middleware/var");
 const userMiddleware = require("./middleware/user");
 const errorPage = require("./middleware/error");
@@ -46,15 +47,6 @@ app.set("view engine", "hbs");
 app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-// app.use(async (req, res, next) => {
-//   try {
-//     const user = await User.findById("627f237c8892a647805e43e0");
-//     req.user = user;
-//     next();
-//   } catch (e) {
-//     console.log(e);
-//   }
-// });
 
 app.use(
   session({
@@ -78,6 +70,7 @@ app.use("/about", aboutRoutes);
 app.use("/card", cardRoutes);
 app.use("/orders", ordersRoutes);
 app.use("/auth", authRouter);
+app.use("/profile", profileRouter);
 
 // Error Page
 app.use(errorPage);

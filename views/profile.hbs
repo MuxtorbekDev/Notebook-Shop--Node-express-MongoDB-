@@ -1,0 +1,33 @@
+<div class="profile">
+  <div class="center">
+    <div class="container">
+      <div class="left">
+        <div class="photo">
+          <div class="circle"></div>   
+          <div class="circle2"></div> 
+          <img alt="user photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1435559/sloth.jpg">
+        </div>     
+        <div class="title__contain">
+          <div class="username">{{user.name}}</div>
+          <div class="title">{{user.email}}</div>
+        </div>
+        <button class="follow">Follow</button>
+        <button class="message">Message</button>
+      </div>
+      <div class="right">
+        <div class="rightbox">
+          <span class="large">{{cardItems}}</span>
+          <span class="small"><i class="fa-solid fa fa-cart-shopping"></i>Cart items</span>
+        </div>
+        <div class="rightbox">
+          <span class="large">{{myNotebooks}}</span>
+          <span class="small"><i class="fa-solid fa fa-laptop"></i>My Notebook</span>
+        </div>
+        <div class="rightbox">
+          <span class="large">{{user._id}}</span>
+          <span class="small">User Id</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

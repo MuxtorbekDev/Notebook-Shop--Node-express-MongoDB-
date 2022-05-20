@@ -45,14 +45,20 @@
 
                   {{!-- Order --}}
             {{#if isOrder}}
-              <li class="active"  ><a href="/orders">Order Now </a></li>
+              <li class="active"  ><a href="/orders">Order Now</a></li>
             {{else}}
-              <li ><a href="/orders">Order  </a></li>
+              <li ><a href="/orders">Order</a></li>
             {{/if}}
-            
+                           {{!-- Profile --}}
+            {{#if isProfile}}
+              <li class="active"><a href="/profile"><i class="fa-solid user-icon fa-user"></i>Profile</a></li>
+            {{else}}
+              <li ><a href="/profile"><i class="fa-solid user-icon fa-user"></i>Profile</a></li>
+            {{/if}}
+
             <li ><a href="/auth/logout">Log Out</a></li>
         {{else}}
-                        {{!-- Login --}}
+                    {{!-- Login --}}
           {{#if isLogin}}
             <li class="active"  ><a href="/auth/login#login">Log IN  </a></li>
           {{else}}
