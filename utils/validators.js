@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
 const User = require("../models/user");
 
 exports.registerValidators = [
@@ -40,4 +40,17 @@ exports.registerValidators = [
     .isLength({ min: 3 })
     .withMessage("Name should be min 3 symbols")
     .trim(),
+];
+
+exports.notebookValidators = [
+  body("title")
+    .isLength({ min: 3 })
+    .withMessage("minimum length for title should be 3 symbols")
+    .trim(),
+  body("price").isNumeric().withMessage("Write correct price"),
+  body("img").isURL().withMessage("Write correct URL Image"),
+  body("descr")
+    .isLength({ min: 20 })
+    .withMessage("")
+    .withMessage("Description should be min 20 symbols"),
 ];

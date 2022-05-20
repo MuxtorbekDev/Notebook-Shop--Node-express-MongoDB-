@@ -1,23 +1,30 @@
 <h3>New Notebook Add</h3>
 
+{{#if error}}
+<p class="alert"> {{error}}</p>
+
+{{/if}}
+
 <form class="form-control z-depth-2 " action="/add" method="POST">
 <div class="input-field">
-  <input type="text" name="title" id="title" class="validate" required>
+  <input type="text" name="title" id="title" class="validate" value="{{data.title}}" required>
   <label for="title">Notebooks Model</label>
   <span class="helper-text" data-error="Enter Notebooks Model"></span>
 </div>
 <div class="input-field">
-  <input type="number" name="price" id="price" class="validate" min="1" max="100000" required>
+  <input type="number" name="price" id="price" class="validate" value="{{data.price}}"  required>
   <label for="price">Price </label>
   <span class="helper-text" data-error="Enter Price "></span>
 </div>
 <div class="input-field">
-  <input type="text" name="img" id="img" class="validate" required>
+  <input type="text" name="img" id="img" class="validate" value="{{data.img}}" required>
   <label for="img">URL Image</label>
   <span class="helper-text" data-error="Enter URL Image"></span>
 </div>
 <div class="input-field">
-  <textarea  name="descr" id="descr" style="height: 5rem;" class="materialize-textarea" required></textarea>
+  <textarea  name="descr" id="descr" style="height: 5rem;" class="materialize-textarea" required>
+    {{data.descr}}
+  </textarea>
   <label for="descr">Description </label>
   <span class="helper-text" data-error="Enter Description"></span>
 </div>
