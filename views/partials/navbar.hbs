@@ -1,8 +1,7 @@
  <nav>
-    <div class="nav-wrapper navbar">
+    <div class="nav-wrapper  indigo navbar">
       <a href="/" class="brand-logo">Notebook Shop</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-
+      <ul   class="right navUl">
               {{!-- Home --}}
         {{#if isHome}}
           <li class="active"><a href="/">Home</a></li>
@@ -67,5 +66,9 @@
 
         {{/if}}
       </ul>
+      <div class="btn-nav">
+        <i class="fa-solid fa-bars block"></i>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
     </div>
   </nav>
