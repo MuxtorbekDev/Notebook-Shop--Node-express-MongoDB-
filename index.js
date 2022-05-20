@@ -18,6 +18,7 @@ const ordersRoutes = require("./routes/orders");
 const authRouter = require("./routes/auth");
 const varMiddleware = require("./middleware/var");
 const userMiddleware = require("./middleware/user");
+const errorPage = require("./middleware/error");
 
 const MongoStore = require("connect-mongodb-session")(session);
 
@@ -77,6 +78,12 @@ app.use("/about", aboutRoutes);
 app.use("/card", cardRoutes);
 app.use("/orders", ordersRoutes);
 app.use("/auth", authRouter);
+
+// Error Page
+app.use(errorPage);
+// app.get("*/*", (req, res) => {
+//   res.render("404Error");
+// });
 
 // Listen
 async function start() {
