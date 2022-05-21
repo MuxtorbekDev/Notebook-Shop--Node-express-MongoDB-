@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const Notebook = require("../models/notebook");
 const auth = require("../middleware/auth");
-const User = require("../middleware/user");
+const User = require("../models/user");
 
 router.get("/", async (req, res) => {
   const notebooks = await Notebook.find();
@@ -13,11 +13,19 @@ router.get("/", async (req, res) => {
     }
   });
 
+  // let count = 0;
+  // if (req.user.cart.items[0] == undefined) {
+  //   count = 0;
+  //   return count;
+  // } else {
+  //   count = req.user.cart.items[0].count;
+  // }
+
   res.render("profile", {
     title: `Profile ${req.user.name}`,
     isProfile: true,
     user: req.user.toObject(),
-    cardItems: req.user.cart.items[0].count,
+    // cardItems: count,
     myNotebooks: arrayMy.length,
   });
 });
@@ -26,12 +34,11 @@ router.post("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
     const toChange = {
-      name: teq.body.name,
+      name: req.body.name,
     };
 
-    console.log(req.file);
     if (req.file) {
-      toChange.avatarUrl = "";
+      toChange.avatarUrl = req.file.path;
     }
 
     Object.assign(user, toChange);
