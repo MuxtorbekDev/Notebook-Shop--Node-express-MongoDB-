@@ -5,14 +5,34 @@
         <div class="photo">
           <div class="circle"></div>   
           <div class="circle2"></div> 
-          <img alt="user photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1435559/sloth.jpg">
+          {{#if user.avatarUrl}}
+          <img  src="/{{user.avatarUrl}}" alt="avatar {{user.name}}">
+          {{else}}
+          <img " src="/image/usernofount.png" alt="avatar {{user.name}}>
+          {{/if}}
         </div>     
         <div class="title__contain">
           <div class="username">{{user.name}}</div>
           <div class="title">{{user.email}}</div>
         </div>
-        <button class="follow">Follow</button>
-        <button class="message">Message</button>
+        <form action="/profile" method="POST" enctype="multipart/form-data">
+          <div class="input-field">
+            <input type="text" name="name" id="name" class="validate"  required>
+            <label for="name">Edit Name</label>
+            <span class="helper-text" data-error="Enter Your Name"></span>
+          </div>
+              <div class="file-field input-field">
+                <div class="btn  indigo darken-1">
+                  <span>Your Photo</span>
+                  <input type="file" name="avatar">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                </div>
+              </div>
+
+              <button type="submit" class="btn indigo darken-4">Change Account</button>
+        </form>
       </div>
       <div class="right">
         <div class="rightbox">

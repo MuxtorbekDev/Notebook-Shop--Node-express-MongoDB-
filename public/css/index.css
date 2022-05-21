@@ -416,17 +416,6 @@ body {
   margin: 20px auto 20px;
 }
 
-.profile button {
-  border: 1px solid black;
-  height: 30px;
-  width: 150px;
-  border-radius: 15px;
-  margin: 5px 0;
-  cursor: pointer;
-}
-.profile button:hover {
-  background: #a0a1b2;
-}
 
 .title {
   font-size: 1em;
@@ -500,6 +489,7 @@ i.fa {
 nav {
   position: relative;
 }
+
 
 @media (max-width: 999px) {
   nav ul.navUl {

@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const router = Router();
 const Notebook = require("../models/notebook");
+const auth = require("../middleware/auth");
+const User = require("../middleware/user");
 
 router.get("/", async (req, res) => {
   const notebooks = await Notebook.find();
@@ -19,4 +21,25 @@ router.get("/", async (req, res) => {
     myNotebooks: arrayMy.length,
   });
 });
+
+router.post("/", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const toChange = {
+      name: teq.body.name,
+    };
+
+    console.log(req.file);
+    if (req.file) {
+      toChange.avatarUrl = "";
+    }
+
+    Object.assign(user, toChange);
+    await user.save();
+    res.redirect("/profile");
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 module.exports = router;

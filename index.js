@@ -20,6 +20,7 @@ const profileRouter = require("./routes/profile");
 const varMiddleware = require("./middleware/var");
 const userMiddleware = require("./middleware/user");
 const errorPage = require("./middleware/error");
+const fileMiddleware = require("./middleware/file");
 
 const MongoStore = require("connect-mongodb-session")(session);
 
@@ -59,6 +60,7 @@ app.use(
 app.use(flash());
 
 // Middleware
+app.use(fileMiddleware.single("avatar"));
 app.use(varMiddleware);
 app.use(userMiddleware);
 
