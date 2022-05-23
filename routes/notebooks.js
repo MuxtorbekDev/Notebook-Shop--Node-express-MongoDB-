@@ -6,14 +6,16 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const notebooks = await Notebook.find()
+    const notebooksData = await Notebook.find()
       .populate("userId", "email name")
       .select("price title img descr");
+    const notebooksReverse = notebooksData.reverse();
+
     res.render("notebooks", {
       title: "Notebook Page",
       isNotebooks: true,
       userId: req.user ? req.user._id.toString() : null,
-      notebooks,
+      notebooks: notebooksReverse,
     });
   } catch (e) {
     console.log(e);
