@@ -543,3 +543,24 @@ nav {
     padding-top: 15px;
   }
 }
+
+/* Showcase */
+.showcase {
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: url('https://i.ibb.co/zGSDGCL/slide1.png') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+}
+
+.showcase h2, .showcase p {
+  margin-bottom: 10px;
+}
+
+.showcase .btn {
+  margin-top: 20px;
+}

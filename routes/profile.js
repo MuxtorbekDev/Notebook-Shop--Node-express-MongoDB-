@@ -13,19 +13,18 @@ router.get("/", async (req, res) => {
     }
   });
 
-  // let count = 0;
-  // if (req.user.cart.items[0] == undefined) {
-  //   count = 0;
-  //   return count;
-  // } else {
-  //   count = req.user.cart.items[0].count;
-  // }
+  let count = 0;
+  if (req.user.cart.items.length == 0) {
+    count = 0;
+  } else {
+    count = req.user.cart.items[0].count;
+  }
 
   res.render("profile", {
     title: `Profile ${req.user.name}`,
     isProfile: true,
     user: req.user.toObject(),
-    // cardItems: count,
+    cardItems: count,
     myNotebooks: arrayMy.length,
   });
 });

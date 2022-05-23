@@ -8,7 +8,7 @@
           {{#if user.avatarUrl}}
           <img  src="/{{user.avatarUrl}}" alt="avatar {{user.name}}">
           {{else}}
-          <img  src="/image/usernofount.png" alt="avatar {{user.name}}>
+          <img  src="/image/usernofount.png" alt="avatar {{user.name}}">
           {{/if}}
         </div>     
         <div class="title__contain">
@@ -36,12 +36,7 @@
       </div>
       <div class="right">
         <div class="rightbox">
-          {{!-- {{#if user.cart.items[0] }}
-          <span class="large">{{user.cart.items[0].count}}</span>
-          {{else}}
-          <span class="large">0</span>
-          {{/if}} --}}
-          <span class="large">0</span>
+          <span class="large">{{cardItems}}</span>
           <span class="small"><i class="fa-solid fa fa-cart-shopping"></i>Cart items</span>
         </div>
         <div class="rightbox">
